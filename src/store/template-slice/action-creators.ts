@@ -25,10 +25,9 @@ export const getPosts = createAsyncThunk<
     return data;
   } catch (error: unknown) {
     if (axios.isAxiosError<ErrorObj>(error)) {
-      console.log('Error is here:', error);
-      // return thunkApi.rejectWithValue({
-      //   errorMessage: error?.response?.message || 'ds',
-      // });
+      return thunkApi.rejectWithValue({
+        errorMessage: error.message,
+      });
     }
     return thunkApi.rejectWithValue({
       errorMessage: 'An unknown error occurred',
