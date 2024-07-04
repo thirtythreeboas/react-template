@@ -16,9 +16,7 @@ type ErrorObj = {
 export const getPosts = createAsyncThunk<
   Posts,
   number,
-  {
-    rejectValue: MyKnownError;
-  }
+  {rejectValue: MyKnownError}
 >('posts/getPosts', async (id, thunkApi) => {
   try {
     const {data} = await API.get<Posts>(`posts/?_start=0&_limit=${id}`);
